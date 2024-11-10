@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Security Consultant Ltd</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* No scrollbars */
+        }
+
+        #flipbook {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 80vh;
+    background: #fff;
+}
+
+        .page {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .page img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+    #flipbook {
+        width: 100%;
+        height: 80vh;  /* Adjust height for smaller screens */
+    }
+}
+
+        .turnjs-button {
+    position: absolute;
+    top: 50%;  /* Vertically center */
+    transform: translateY(-50%); /* Center the button vertically */
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    width: auto;
+}
+
+.turnjs-prev {
+    left: 20px;  /* Small offset from left */
+}
+
+.turnjs-next {
+    right: 20px; /* Small offset from right */
+}
+
+    </style>
+    <!-- Include jQuery and Turn.js via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+</head>
+<body>
+    <!-- Flipbook container -->
+    <div id="flipbook">
+        <div class="page">
+            <img src="Slide1.jpg" alt="Slide 1">
+        </div>
+        <div class="page">
+            <img src="Slide2.jpg" alt="Slide 2">
+        </div>
+        <div class="page">
+            <img src="Slide3.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide4.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide5.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide6.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide7.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide8.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide9.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide10.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide11.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide12.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide13.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide14.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide15.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide16.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide17.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide18.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide19.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide20.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide21.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide22.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide23.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide24.jpg" alt="Slide 3">
+        </div>
+        <div class="page">
+            <img src="Slide25.jpg" alt="Slide 3">
+        </div>
+
+        <!-- Add more pages as needed -->
+    </div>
+
+    <!-- Custom Flip Buttons -->
+    <button class="turnjs-prev">Prev</button>
+    <button class="turnjs-next">Next</button>
+
+    <script>
+        $(document).ready(function() {
+    // Initialize Turn.js on the #flipbook div with smoother transition settings
+    $("#flipbook").turn({
+        width: "100%",
+        height: "100%",
+        autoCenter: true,
+        duration: 1500,  // Set the duration for the flip transition (slower)
+        easing: "ease-in-out", // Apply smoother easing for a natural flip transition
+    });
+
+    // Custom "Prev" and "Next" buttons functionality
+    $(".turnjs-prev").click(function() {
+        $("#flipbook").turn("previous");
+    });
+
+    $(".turnjs-next").click(function() {
+        $("#flipbook").turn("next");
+    });
+
+    // Flip when clicking anywhere on the screen
+    $(document).click(function(event) {
+        var width = $(window).width();
+        // If the click is on the left half of the screen, go to the previous page
+        if (event.clientX < width / 2) {
+            $("#flipbook").turn("previous");
+        } else {
+            // If the click is on the right half of the screen, go to the next page
+            $("#flipbook").turn("next");
+        }
+    });
+});
+    </script>
+</body>
